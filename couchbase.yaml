@@ -1,4 +1,3 @@
 - server: http://COUCHBASE-IP:8091
        user: Administrator
        password: couchbase
-       timeout: 10 # Optional timeout to http connections to the API (Only supported on python2.6 and above)
