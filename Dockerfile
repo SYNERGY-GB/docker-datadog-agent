@@ -6,3 +6,4 @@ ADD  couchbase.yaml /
 ADD  replace.sh /replace.sh
 
 ENTRYPOINT ["/replace.sh"]
+CMD ["supervisord", "-n", "-c", "/etc/dd-agent/supervisor.conf"]
