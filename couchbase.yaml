@@ -1,7 +1,8 @@
 init_config:
 
 instances:
-
-  - server: http://COUCHBASE-IP:8091
+     - server: http://COUCHBASE-IP:8091
        user: Administrator
        password: couchbase
+
+
