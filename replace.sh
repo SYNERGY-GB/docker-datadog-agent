@@ -1,17 +1,17 @@
 #!/bin/sh
 
-hosts=$ETCD
 instance=''
 
-sed -e "s/COUCHBASE-IP/${CB_HOST}/g" couchbase.yaml > /etc/dd-agent/conf.d/couchbase.yaml
+sed -e "s/COUCHBASE-IP/${CB_HOST}/g" couchbase.yaml > /Users/marysalcedo/couchbase.yaml
+
+hosts=$(echo $ETCD | sed -e 's/,/ /g')
 
 for x in $hosts
 do
     instance=$instance'\t- url: "https://'$x'"\n'
 done
 
-echo $instance > /etc/dd-agent/conf.d/help.txt
+echo $instance > help.txt
 
-sed '/instances:/r /etc/dd-agent/conf.d/help.txt' etcd.yaml > /etc/dd-agent/conf.d/etcd.yaml
+sed '/instances:/r help.txt' etcd.yaml > /Users/marysalcedo/etcd.yaml
 
-/entrypoint.sh "$@"
