@@ -2,7 +2,7 @@
 
 instance=''
 
-sed -e "s/COUCHBASE-IP/${CB_HOST}/g" couchbase.yaml > /Users/marysalcedo/couchbase.yaml
+sed -e "s/COUCHBASE-IP/${CB_HOST}/g" couchbase.yaml > /etc/dd-agent/conf.d/couchbase.yaml
 
 hosts=$(echo $ETCD | sed -e 's/,/ /g')
 
@@ -11,7 +11,7 @@ do
     instance=$instance'\t- url: "https://'$x'"\n'
 done
 
-echo $instance > help.txt
+echo $instance > /etc/dd-agent/conf.d/help.txt
 
-sed '/instances:/r help.txt' etcd.yaml > /Users/marysalcedo/etcd.yaml
+sed '/instances:/r /etc/dd-agent/conf.d/help.txt' etcd.yaml > /etc/dd-agent/conf.d/etcd.yaml
 
