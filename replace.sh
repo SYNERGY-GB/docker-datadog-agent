@@ -15,3 +15,4 @@ echo $instance > /etc/dd-agent/conf.d/help.txt
 
 sed '/instances:/r /etc/dd-agent/conf.d/help.txt' etcd.yaml > /etc/dd-agent/conf.d/etcd.yaml
 
+/entrypoint.sh "$@"
