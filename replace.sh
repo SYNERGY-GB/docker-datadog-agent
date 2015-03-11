@@ -10,8 +10,8 @@ do
     instance=$instance'\t- url: "https://'$x'"\n'
 done
 
-echo $instance > help.txt
+echo $instance > /etc/dd-agent/conf.d/help.txt
 
-sed '/instances:/r help.txt' etcd.yaml > /etc/dd-agent/conf.d/etcd.yaml
+sed '/instances:/r /etc/dd-agent/conf.d/help.txt' etcd.yaml > /etc/dd-agent/conf.d/etcd.yaml
 
 /entrypoint.sh "$@"
