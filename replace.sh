@@ -8,7 +8,7 @@ hosts=$(echo $ETCD | sed -e 's/,/ /g')
 
 for x in $hosts
 do
-    instance=$instance'- url: "https://'$x'"\n'
+    instance=$instance'- url: "http://'$x'"\n'
 done
 
 echo $instance > /etc/dd-agent/conf.d/help.txt
