@@ -2,5 +2,4 @@ init_config:
 
 # url, the API endpoint of your etcd instance
 instances:
-# timeout, time to wait on a etcd API request
-      timeout: 5
+
