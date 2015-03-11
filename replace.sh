@@ -8,10 +8,12 @@ hosts=$(echo $ETCD | sed -e 's/,/ /g')
 
 for x in $hosts
 do
-    instance=$instance'    - url: "https://'$x'"\n'
+    instance=$instance'- url: "https://'$x'"\n'
 done
 
 echo $instance > /etc/dd-agent/conf.d/help.txt
+
+sed 's/^/    /' /etc/dd-agent/conf.d/help.txt > /etc/dd-agent/conf.d/help.txt
 
 sed '/instances:/r /etc/dd-agent/conf.d/help.txt' etcd.yaml > /etc/dd-agent/conf.d/etcd.yaml
 
