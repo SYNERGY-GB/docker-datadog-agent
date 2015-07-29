@@ -2,4 +2,4 @@ init_config:
 
 # url, the API endpoint of your etcd instance
 instances:
-
+  - url: http://{{getv "/system/etcd-host"}}
