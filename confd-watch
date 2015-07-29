@@ -6,19 +6,18 @@ set -eo pipefail
 : ${ETCD_HOST?"ETCD_HOST must be defined in order to load configuration."}
 
 ETCD_PORT=${ETCD_PORT:-4001}
-ETCD_PREFIX=${ETCD_PREFIX:-/apps}
 
 ETCD=$ETCD_HOST:$ETCD_PORT
 
 # Try to make initial configuration every 5 seconds until successful
-until confd -prefix $ETCD_PREFIX -onetime -node $ETCD; do
+until confd -onetime -node $ETCD; do
     echo "[dd-agent] waiting for confd to create initial dd-agent configuration."
     sleep 5
 done
 
 # Put a continual polling `confd` process into the background to watch
 # for changes every $UPDATE_INTERVAL seconds
-confd -interval $UPDATE_INTERVAL -prefix $ETCD_PREFIX -node $ETCD &
+confd -interval $UPDATE_INTERVAL -node $ETCD &
 
 # Run the supervisor in the background and save its pid
 supervisord -n -c /etc/dd-agent/supervisor.conf &
