@@ -8,7 +8,7 @@ dest = "/etc/dd-agent/conf.d/etcd.yaml"
 
 # The etcd keys or directory to watch.  This is where the information to fill in
 # the template will come from.
-keys = [ "/system/etcd-host" ]
+keys = [ "/system/etcd-host",  "/socialplus/redis" ]
 
 # File ownership and mode information
 owner = "root"
