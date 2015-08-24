@@ -1,0 +1,18 @@
+[template]
+# The name of the template that will be used to render the application's configuration file
+# Confd will look in `/etc/conf.d/templates` for these files by default
+src = "redisdb.yaml.tmpl"
+
+# The location to place the rendered configuration file
+dest = "/etc/dd-agent/conf.d/redisdb.yaml"
+
+# The etcd keys or directory to watch.  This is where the information to fill in
+# the template will come from.
+keys = [ "/system/etcd-host" ]
+
+# File ownership and mode information
+owner = "root"
+mode = "0644"
+
+# HUP tells the supervisor to reload all processes
+reload_cmd = "/bin/bash -c 'kill -HUP `cat /var/run/supervisor.pid`'"
