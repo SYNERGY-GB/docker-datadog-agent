@@ -16,4 +16,4 @@ ADD confd-watch /bin/confd-watch
 RUN chmod +x /bin/confd-watch
 
 ENTRYPOINT ["/bin/confd-watch"]
-CMD ["supervisord", "-n", "-c", "/etc/dd-agent/supervisor.conf"]
+CMD []
