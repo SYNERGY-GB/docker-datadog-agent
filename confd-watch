@@ -9,6 +9,7 @@ ETCD_PORT=${ETCD_PORT:-4001}
 
 ETCD=$ETCD_HOST:$ETCD_PORT
 
+UPDATE_INTERVAL=${UPDATE_INTERVAL:-10}
 # Try to make initial configuration every 5 seconds until successful
 until confd -onetime -node $ETCD; do
     echo "[dd-agent] waiting for confd to create initial dd-agent configuration."
