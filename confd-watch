@@ -20,7 +20,7 @@ done
 confd -interval $UPDATE_INTERVAL -node $ETCD &
 
 # Run the supervisor in the background and save its pid
-supervisord -n -c /etc/dd-agent/supervisor.conf &
+/opt/datadog-agent/bin/supervisord -n -c /etc/dd-agent/supervisor.conf &
 echo $! > /var/run/supervisor.pid
 
 #Loop forever
