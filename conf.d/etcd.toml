@@ -15,4 +15,4 @@ owner = "root"
 mode = "0644"
 
 # HUP tells the supervisor to reload all processes
-reload_cmd = "/bin/bash -c 'kill -HUP `cat /var/run/supervisor.pid`'"
+reload_cmd = "/bin/bash -c 'kill -HUP `cat /var/run/supervisor.pid` || true'"
